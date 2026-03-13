@@ -1,4 +1,8 @@
 import React, {useState} from "react";
+const logout = ()=>{
+    localStorage.removeItem('token');
+    window.location = '/';
+}
 const InputTodo = ()=>{
     const [description, setDescription]= useState("");
     const onSubmitform= async e =>{
@@ -30,7 +34,7 @@ const InputTodo = ()=>{
     return(
         <>
             <h1 className="text-center mt-5">TO DO LIST</h1>
-            <button className="text-right mt-2" onClick={localStorage.removeItem('token')}>logout</button>
+            <button className="text-right mt-2" onClick={logout}>logout</button>
             <form className="d-flex m-5" onSubmit={onSubmitform}>
                 <input type="text" className="form-control" value={description} onChange={e=> setDescription(e.target.value)}/>
                 <button className="btn btn-success">add</button>
